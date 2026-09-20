@@ -3,6 +3,13 @@
 Version numbers below are the **add-on** version (semantic versioning). The
 bundled upstream BirdNET-Go release is tracked separately in `build.yaml`.
 
+## 1.0.2
+
+- Map host video devices (`video: true`) so the Intel iGPU render node
+  (`/dev/dri/renderD128`) is available for OpenVINO GPU acceleration on
+  Intel-based hosts (e.g. Intel NUC). Fixes the "GPU device node cannot be
+  opened" error in the AI model settings. Hosts without a GPU are unaffected.
+
 ## 1.0.1
 
 - Make the ingress sidebar panel visible to non-admin users as well

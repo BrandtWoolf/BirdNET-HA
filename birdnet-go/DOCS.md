@@ -73,6 +73,23 @@ capture device in **Settings → Audio → Audio Sources**.
 > hardware with the sound device attached. It does not work in most VM or
 > container-based installs — use RTSP there.
 
+## GPU acceleration (optional)
+
+The default BirdNET model runs on the CPU and needs no GPU. Optional ONNX
+models (Google Perch, BattyBirdNET, the Geomodel) and detection heatmaps can
+use **OpenVINO** acceleration on an Intel integrated GPU.
+
+This add-on sets `video: true`, so the Supervisor maps all available host video
+devices — including the Intel render node `/dev/dri/renderD128` — into the
+container. On an Intel-based Home Assistant OS host (for example an Intel NUC)
+GPU acceleration is available automatically; you can enable it under
+**Settings → AI models** in the BirdNET-Go web UI.
+
+Hosts without a GPU (or non-Intel hardware) are unaffected — no device is
+mapped and BirdNET-Go continues to run on the CPU. If the AI model settings
+report that the GPU device node cannot be opened, make sure you are on add-on
+version 1.0.2 or newer and restart the add-on.
+
 ## Home Assistant integration (MQTT auto-discovery)
 
 BirdNET-Go can publish detections to MQTT with Home Assistant auto-discovery,

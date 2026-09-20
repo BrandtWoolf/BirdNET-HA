@@ -1,5 +1,5 @@
 name: BirdNET-Go
-version: "1.0.1"
+version: "1.0.2"
 slug: birdnet_go
 description: >-
   Realtime soundscape analyser for birds, wildlife, and bats — self-hosted,
@@ -24,5 +24,6 @@ map:
   - share:rw
   - media:rw
 audio: true
+video: true
 services:
   - mqtt:want
