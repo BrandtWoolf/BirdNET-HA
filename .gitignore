@@ -1,0 +1,8 @@
+# Local env
+.env
+
+# BirdNET-Go runtime data (database, audio clips, logs) and generated config.
+/data/*
+!/data/.gitkeep
+/config/*
+!/config/.gitkeep

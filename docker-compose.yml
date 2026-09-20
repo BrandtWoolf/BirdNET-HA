@@ -1,0 +1,26 @@
+services:
+  birdnet-go:
+    image: ghcr.io/tphakala/birdnet-go:nightly
+    container_name: birdnet-go
+    restart: unless-stopped
+    ports:
+      - "${WEB_PORT:-8080}:8080"
+    environment:
+      - TZ=${TZ:-UTC}
+      - BIRDNET_UID=${BIRDNET_UID:-1000}
+      - BIRDNET_GID=${BIRDNET_GID:-1000}
+    volumes:
+      - ./config:/config
+      - ./data:/data
+    # HLS live-stream segments served from a RAM disk for performance.
+    tmpfs:
+      - /config/hls:exec,size=50M,uid=${BIRDNET_UID:-1000},gid=${BIRDNET_GID:-1000},mode=0755
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    # NOTE: Sound-card passthrough (`--device /dev/snd`) is Linux-only and does
+    # NOT work on macOS/Windows Docker Desktop. On macOS, feed audio to
+    # BirdNET-Go with an RTSP stream instead (configure it in the web UI under
+    # Audio Sources). If you run this stack on a Linux host with a sound card,
+    # uncomment the block below.
+    # devices:
+    #   - /dev/snd:/dev/snd
