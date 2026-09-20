@@ -10,8 +10,6 @@ arch:
   - amd64
   - aarch64
 init: false
-startup: application
-boot: auto
 ingress: true
 ingress_port: 8080
 panel_icon: mdi:bird
@@ -27,5 +25,3 @@ map:
 audio: true
 services:
   - mqtt:want
-options: {}
-schema: {}
