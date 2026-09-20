@@ -23,7 +23,9 @@ and manages it through the Home Assistant Supervisor.
 2. Click the ⋮ menu (top-right) → **Repositories**, and add:
    `https://github.com/BrandtWoolf/BirdNET-HA`
 3. Find **BirdNET-Go** in the store, click **Install**, then **Start**.
-4. Open the web UI with **Open Web UI** and follow the onboarding wizard.
+4. Open the web UI with **Open Web UI** and follow the onboarding wizard. The UI
+   is served through Home Assistant ingress; enable **Show in sidebar** to pin
+   it to the sidebar.
 
 See [DOCS.md](DOCS.md) for detailed configuration, audio setup, and MQTT / Home
 Assistant integration.

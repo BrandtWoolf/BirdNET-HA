@@ -13,11 +13,14 @@ arch:
 init: false
 startup: application
 boot: auto
+ingress: true
+ingress_port: 8080
+panel_icon: mdi:bird
+panel_title: BirdNET-Go
 ports:
-  8080/tcp: 8080
+  8080/tcp: null
 ports_description:
-  8080/tcp: BirdNET-Go web interface
-webui: "http://[HOST]:[PORT:8080]/"
+  8080/tcp: Optional direct access to the web interface (ingress is used by default)
 map:
   - addon_config:rw
   - share:rw
