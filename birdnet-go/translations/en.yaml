@@ -1,0 +1,3 @@
+configuration: {}
+network:
+  8080/tcp: BirdNET-Go web interface

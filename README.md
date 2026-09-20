@@ -1,10 +1,40 @@
 # BirdNET-HA
 
-Home Assistant app to run [BirdNET-Go](https://github.com/tphakala/birdnet-go).
+A [Home Assistant](https://www.home-assistant.io/) add-on that runs
+[BirdNET-Go](https://github.com/tphakala/birdnet-go) — a realtime, self-hosted,
+local-AI soundscape analyser for birds, wildlife, and bats.
 
-## Local Docker stack
+This repository is a **Home Assistant add-on repository**. It also ships a
+Docker Compose stack for local development and testing outside Home Assistant.
 
-A minimal Docker Compose stack to stand up the `birdnet-go` container locally.
+## Install as a Home Assistant add-on
+
+1. In Home Assistant, open **Settings → Add-ons → Add-on Store**.
+2. Click the ⋮ menu (top-right) → **Repositories** and add:
+
+   ```
+   https://github.com/BrandtWoolf/BirdNET-HA
+   ```
+
+3. Install **BirdNET-Go** from the store, **Start** it, then **Open Web UI**
+   and follow the onboarding wizard.
+
+Full add-on documentation: [`birdnet-go/DOCS.md`](birdnet-go/DOCS.md).
+
+## Repository layout
+
+| Path                         | Purpose                                             |
+| ---------------------------- | --------------------------------------------------- |
+| `repository.yaml`            | Home Assistant add-on repository manifest           |
+| `birdnet-go/`                | The BirdNET-Go add-on (config + docs)               |
+| `birdnet-go/config.yaml`     | Add-on manifest (wraps the upstream image)          |
+| `birdnet-go/DOCS.md`         | Detailed add-on documentation                       |
+| `docker-compose.yml`         | Local dev stack (run BirdNET-Go without HA)         |
+| `.env.example`               | Template for the local dev stack                    |
+
+## Local development stack (without Home Assistant)
+
+Handy for testing the container on a laptop or server.
 
 ### Prerequisites
 
@@ -18,26 +48,17 @@ docker compose up -d      # pull image and start the container
 docker compose logs -f    # watch startup logs
 ```
 
-Then open the web UI at http://localhost:8080 and follow the onboarding wizard.
+Then open http://localhost:8080 and follow the onboarding wizard. Stop with
+`docker compose down`; config and data persist in `./config` and `./data`.
 
-Stop the stack with `docker compose down` (your config and data persist in
-`./config` and `./data`).
+### Audio input on macOS / Windows
 
-### Layout
+Sound-card passthrough (`--device /dev/snd`) is **Linux-only** and does not work
+on macOS or Windows Docker Desktop. There, provide audio via an **RTSP stream**
+configured in the web UI under *Audio Sources*. On a Linux host with a real
+sound card, uncomment the `devices` block in `docker-compose.yml`.
 
-| Path                 | Purpose                                       |
-| -------------------- | --------------------------------------------- |
-| `docker-compose.yml` | BirdNET-Go service definition                 |
-| `.env.example`       | Template for local settings (copy to `.env`)  |
-| `config/`            | Persisted `config.yaml` and app configuration |
-| `data/`              | Persisted database, audio clips, and logs     |
+## Credits
 
-### Audio input on macOS
-
-Sound-card passthrough (`--device /dev/snd`) is **Linux-only** and does not
-work on macOS or Windows Docker Desktop. On macOS, provide audio to BirdNET-Go
-via an **RTSP stream** and configure it in the web UI under *Audio Sources*.
-An ESP32/M5Stack RTSP microphone or an `ffmpeg` RTSP feed both work well.
-
-On a Linux host with a real sound card, uncomment the `devices` block in
-`docker-compose.yml` to pass `/dev/snd` into the container.
+BirdNET-Go is developed by [@tphakala](https://github.com/tphakala) and
+contributors. This repository only packages it for Home Assistant.

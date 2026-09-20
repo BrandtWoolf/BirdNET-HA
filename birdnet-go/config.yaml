@@ -1,0 +1,29 @@
+name: BirdNET-Go
+version: nightly
+slug: birdnet_go
+description: >-
+  Realtime soundscape analyser for birds, wildlife, and bats — self-hosted,
+  24/7, local AI inference with a web dashboard and MQTT / Home Assistant
+  discovery.
+url: https://github.com/BrandtWoolf/BirdNET-HA/tree/main/birdnet-go
+image: ghcr.io/tphakala/birdnet-go
+arch:
+  - amd64
+  - aarch64
+init: false
+startup: application
+boot: auto
+ports:
+  8080/tcp: 8080
+ports_description:
+  8080/tcp: BirdNET-Go web interface
+webui: "http://[HOST]:[PORT:8080]/"
+map:
+  - addon_config:rw
+  - share:rw
+  - media:rw
+audio: true
+services:
+  - mqtt:want
+options: {}
+schema: {}
