@@ -14,8 +14,13 @@ under the Home Assistant Supervisor.
 4. Click **Open Web UI** and complete the first-run onboarding wizard
    (location, locale, audio source, optional password).
 
-The add-on exposes the web interface on port `8080`. You can change or remove
-the host port under the add-on's **Network** tab.
+The web interface is served through Home Assistant **ingress**, so it opens at a
+Home Assistant URL (no extra port needed) and works the same way as other
+add-ons. Turn on **Show in sidebar** on the add-on's info page to pin BirdNET-Go
+to the Home Assistant sidebar.
+
+If you prefer to reach BirdNET-Go directly (bypassing Home Assistant), open the
+add-on's **Network** tab and assign a host port to `8080/tcp`.
 
 ## Configuration
 
@@ -95,8 +100,9 @@ and `/data` are preserved across updates.
 
 - **No detections:** confirm an audio source is configured and active under
   **Settings → Audio**, and check the add-on **Log** tab.
-- **Web UI not reachable:** verify the port mapping under the **Network** tab
-  and that the add-on is running.
+- **Web UI not reachable:** the UI is served via Home Assistant ingress — use
+  **Open Web UI** or the sidebar entry rather than a direct port. If you enabled
+  a direct host port instead, verify the mapping under the **Network** tab.
 - **Permissions/first start:** the container fixes ownership of `/config` and
   `/data` on startup; the first start after install can take a bit longer.
 
