@@ -3,6 +3,11 @@
 Version numbers below are the **add-on** version (semantic versioning). The
 bundled upstream BirdNET-Go release is tracked separately in `build.yaml`.
 
+## 1.0.1
+
+- Make the ingress sidebar panel visible to non-admin users as well
+  (`panel_admin: false`).
+
 ## 1.0.0
 
 - First versioned release of the BirdNET-Go Home Assistant add-on.

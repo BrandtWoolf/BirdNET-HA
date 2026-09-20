@@ -17,7 +17,8 @@ under the Home Assistant Supervisor.
 The web interface is served through Home Assistant **ingress**, so it opens at a
 Home Assistant URL (no extra port needed) and works the same way as other
 add-ons. Turn on **Show in sidebar** on the add-on's info page to pin BirdNET-Go
-to the Home Assistant sidebar.
+to the Home Assistant sidebar. The panel is visible to all Home Assistant users,
+not just administrators.
 
 If you prefer to reach BirdNET-Go directly (bypassing Home Assistant), open the
 add-on's **Network** tab and assign a host port to `8080/tcp`.
