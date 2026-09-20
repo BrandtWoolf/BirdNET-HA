@@ -86,9 +86,10 @@ New detections will then appear as entities in Home Assistant.
 
 ## Updating
 
-This add-on tracks the upstream `nightly` image tag. To pull the latest build,
-use **Rebuild** on the add-on's info page (or reinstall). Your `/config` and
-`/data` are preserved across updates.
+This add-on is pinned to a specific upstream BirdNET-Go release
+(`ghcr.io/tphakala/birdnet-go:<version>`). When a new version of the add-on is
+published, update it from the add-on's info page (**Update**). Your `/config`
+and `/data` are preserved across updates.
 
 ## Troubleshooting
 

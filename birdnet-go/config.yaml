@@ -1,5 +1,5 @@
 name: BirdNET-Go
-version: nightly
+version: "20260823"
 slug: birdnet_go
 description: >-
   Realtime soundscape analyser for birds, wildlife, and bats — self-hosted,
