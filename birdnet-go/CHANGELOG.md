@@ -1,5 +1,12 @@
 # Changelog
 
+## 20260823.1
+
+- Serve the web UI through Home Assistant **ingress** for a consistent URL and
+  the **Show in sidebar** option. Direct host-port access is now optional.
+- Build the add-on locally `FROM` the pinned upstream image, decoupling the
+  add-on version from the upstream release tag.
+
 ## 20260823
 
 - Initial release of the BirdNET-Go Home Assistant add-on.

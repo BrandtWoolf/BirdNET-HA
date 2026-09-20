@@ -1,0 +1,6 @@
+# The add-on is built locally by the Supervisor FROM the pinned upstream
+# BirdNET-Go image. This decouples the add-on version (config.yaml) from the
+# upstream release tag, so add-on-only changes can ship their own version.
+build_from:
+  amd64: ghcr.io/tphakala/birdnet-go:20260823
+  aarch64: ghcr.io/tphakala/birdnet-go:20260823

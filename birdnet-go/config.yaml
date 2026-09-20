@@ -1,12 +1,11 @@
 name: BirdNET-Go
-version: "20260823"
+version: "20260823.1"
 slug: birdnet_go
 description: >-
   Realtime soundscape analyser for birds, wildlife, and bats — self-hosted,
   24/7, local AI inference with a web dashboard and MQTT / Home Assistant
   discovery.
 url: https://github.com/BrandtWoolf/BirdNET-HA/tree/main/birdnet-go
-image: ghcr.io/tphakala/birdnet-go
 arch:
   - amd64
   - aarch64
